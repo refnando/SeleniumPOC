@@ -32,10 +32,12 @@ This project demonstrates automated tests using Java, Selenium, and TestNG frame
 ## Setup Instructions
 
 1. Clone this repository to your local machine.
-2. Ensure you have Java, Selenium, and TestNG installed.
+2. Ensure you have Java, Selenium, TestNG, and Maven installed.
 3. Set up the required WebDriver for your preferred browser (e.g., ChromeDriver for Google Chrome).
-4. Configure the WebDriver path in the test scripts.
-5. Run the tests using your preferred test runner or IDE.
+4. Configure the WebDriver path and other necessary dependencies in the Maven pom.xml file.
+5. Implement the test scripts using Java, Selenium, and TestNG in the appropriate directory structure.
+6. Run the tests using Maven commands such as mvn clean test.
+
 
 ## Additional Notes
 
@@ -43,6 +45,7 @@ This project demonstrates automated tests using Java, Selenium, and TestNG frame
 - Test data, such as valid and invalid user credentials, can be configured in the test scripts or fetched from external sources.
 - Test reports and logs will be generated after test execution.
 - TestNG annotations and assertions are used for test organization and result verification.
+- Maven handles the project's build and dependency management.
 
 Feel free to explore and enhance the test suite as needed to meet your specific requirements.
 
