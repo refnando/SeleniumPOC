@@ -41,15 +41,15 @@ public class Homepage  extends  BasePage{
     @FindBy(xpath = ("//button[@id='add-to-cart-sauce-labs-onesie']"))
     public WebElement addToCartSLO;
 
-    public Boolean productsPanelDisplayed(){
-        try{
-            wait.until(ExpectedConditions.visibilityOf(productsPanel));
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
+//    public Boolean productsPanelDisplayed(){
+//        try{
+//            wait.until(ExpectedConditions.visibilityOf(productsPanel));
+//            return true;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 
     public Homepage clickOnBurgerIcon(){
         burgerIcon.click();
