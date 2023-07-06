@@ -4,10 +4,7 @@ import Utils.LoadProperties;
 import Utils.ScreenShot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -17,7 +14,7 @@ public class BaseTest {
     public LoadProperties properties;
     public ScreenShot sc;
 
-    @BeforeClass
+    @BeforeSuite
     public void setUp(){
         properties = new LoadProperties();
         driver = new Driver(properties.getProperty("driver")).getDriver();
@@ -26,7 +23,7 @@ public class BaseTest {
         sc = new ScreenShot(driver);
     }
 
-    @BeforeMethod
+    @BeforeTest
     public void testSetup(){
         driver.get(properties.getProperty("url"));
     }
@@ -37,7 +34,7 @@ public class BaseTest {
         driver.manage().deleteAllCookies();
     }
 
-    @AfterClass
+    @AfterSuite
     public void tearDown(){
         driver.quit();
     }

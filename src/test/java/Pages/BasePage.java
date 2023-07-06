@@ -3,53 +3,61 @@ package Pages;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class BasePage {
-
     public WebDriver driver;
-    public WebDriverWait wait;
-    public JavascriptExecutor jse;
+    private WebDriverWait wait;
+    private JavascriptExecutor jse;
 
-    public BasePage(WebDriver driver){
-        String browser = "firefox";
-
-        if(browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "src/test/java/Utils/Data/Drivers/chromedriver");
-            ChromeOptions chromeOptions = new ChromeOptions();
-            driver = new ChromeDriver(chromeOptions);
-        } else if (browser.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "src/test/java/Utils/Data/Drivers/geckodriver");
-            FirefoxOptions firefoxOptions = new FirefoxOptions();
-            driver = new FirefoxDriver(firefoxOptions);
-
-        }
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        jse = (JavascriptExecutor)driver;
+        jse = (JavascriptExecutor) driver;
     }
 
-    public void waitUntilElementBeClickeable(WebElement element){
+    public void waitUntilElementBeClickable(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void waitUntilPageLoad(){
+    public void waitUntilPageLoad() {
         wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
-    public WebElement waitUntilBeDisplayed(WebElement element){
+    public WebElement waitUntilBeDisplayed(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public boolean isDisplayed(WebElement element){
+    public boolean isDisplayed(WebElement element) {
         return element.isDisplayed();
     }
 
+    // Métodos getter y setter para los campos privados
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
+    }
+
+    public void setWait(WebDriverWait wait) {
+        this.wait = wait;
+    }
+
+    public JavascriptExecutor getJse() {
+        return jse;
+    }
+
+    public void setJse(JavascriptExecutor jse) {
+        this.jse = jse;
+    }
 }

@@ -16,30 +16,30 @@ public class Homepage  extends  BasePage{
     }
 
     @FindBy(xpath = ("//span[contains(text(),'Products')]"))
-    public WebElement productsPanel;
+    private WebElement productsPanel;
 
     @FindBy(xpath = ("//button[@id='react-burger-menu-btn']"))
-    public WebElement burgerIcon;
+    private WebElement burgerIcon;
     @FindBy(xpath = ("//a[@id='inventory_sidebar_link']"))
-    public WebElement allItemsOption;
+    private WebElement allItemsOption;
 
     @FindBy(xpath = ("//a[@id='about_sidebar_link']"))
-    public WebElement aboutOption;
+    private WebElement aboutOption;
 
     @FindBy(xpath = ("//a[@id='logout_sidebar_link']']"))
-    public WebElement logoutOption;
+    private WebElement logoutOption;
 
     @FindBy(className = "inventory_item_name")
-    public List<WebElement> productNames;
+    private List<WebElement> productNames;
 
     @FindBy(className = "btn_inventory")
-    public List<WebElement> addToCartButtons;
+    private List<WebElement> addToCartButtons;
 
     @FindBy(className = "shopping_cart_badge")
-    public WebElement cartBadge;
+    private WebElement cartBadge;
 
     @FindBy(xpath = ("//button[@id='add-to-cart-sauce-labs-onesie']"))
-    public WebElement addToCartSLO;
+    private WebElement addToCartSLO;
 
 //    public Boolean productsPanelDisplayed(){
 //        try{
@@ -50,6 +50,41 @@ public class Homepage  extends  BasePage{
 //            return false;
 //        }
 //    }
+public WebElement getProductsPanel() {
+    return productsPanel;
+}
+
+    public WebElement getBurgerIcon() {
+        return burgerIcon;
+    }
+
+    public WebElement getAllItemsOption() {
+        return allItemsOption;
+    }
+
+    public WebElement getAboutOption() {
+        return aboutOption;
+    }
+
+    public WebElement getLogoutOption() {
+        return logoutOption;
+    }
+
+    public List<WebElement> getProductNames() {
+        return productNames;
+    }
+
+    public List<WebElement> getAddToCartButtons() {
+        return addToCartButtons;
+    }
+
+    public WebElement getCartBadge() {
+        return cartBadge;
+    }
+
+    public WebElement getAddToCartSLO() {
+        return addToCartSLO;
+    }
 
     public Homepage clickOnBurgerIcon(){
         burgerIcon.click();

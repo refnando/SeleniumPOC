@@ -11,11 +11,11 @@ import java.time.Duration;
 
 public class LoginPage extends BasePage {
     @FindBy(xpath = "(//input[@id='user-name'])")
-    public WebElement userTextField;
+    private WebElement userTextField;
     @FindBy(xpath = ("//input[@id='password']"))
-    public WebElement pwdTextField;
+    private WebElement pwdTextField;
     @FindBy(xpath = ("//input[@id='login-button']"))
-    public WebElement loginButton;
+    private WebElement loginButton;
 
 
 
@@ -48,6 +48,32 @@ public class LoginPage extends BasePage {
         pwdTextField.sendKeys(pwd);
         loginButton.click();
         return PageFactory.initElements(driver, LoginPage.class);
+    }
+
+    // Getters and Setters
+
+    public WebElement getUserTextField() {
+        return userTextField;
+    }
+
+    public void setUserTextField(WebElement userTextField) {
+        this.userTextField = userTextField;
+    }
+
+    public WebElement getPwdTextField() {
+        return pwdTextField;
+    }
+
+    public void setPwdTextField(WebElement pwdTextField) {
+        this.pwdTextField = pwdTextField;
+    }
+
+    public WebElement getLoginButton() {
+        return loginButton;
+    }
+
+    public void setLoginButton(WebElement loginButton) {
+        this.loginButton = loginButton;
     }
 
 }
