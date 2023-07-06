@@ -16,6 +16,8 @@ public class LoginPage extends BasePage {
     private WebElement pwdTextField;
     @FindBy(xpath = ("//input[@id='login-button']"))
     private WebElement loginButton;
+    @FindBy(css = ("div.login_container div.login_wrapper div.login_wrapper-inner div.form_column div.login-box form:nth-child(1) div.error-message-container.error:nth-child(3) > h3:nth-child(1)"))
+    private WebElement invalidCredentialsError;
 
 
 
@@ -35,8 +37,13 @@ public class LoginPage extends BasePage {
         }
     }
 
+    public void clearCredentialFields(){
+        userTextField.clear();
+        pwdTextField.clear();
+    }
+
     public Homepage LoginWithValidCredentials(String user, String pwd){
-     //   isUserTextFieldDisplayed();
+        clearCredentialFields();
         userTextField.sendKeys(user);
         pwdTextField.sendKeys(pwd);
         loginButton.click();
@@ -44,10 +51,15 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage loginWithInvalidCredentials(String user, String pwd){
+        clearCredentialFields();
         userTextField.sendKeys(user);
         pwdTextField.sendKeys(pwd);
         loginButton.click();
         return PageFactory.initElements(driver, LoginPage.class);
+    }
+
+    public String getInvalidCredentialsErrorMessage(){
+        return invalidCredentialsError.getText();
     }
 
     // Getters and Setters
@@ -74,6 +86,13 @@ public class LoginPage extends BasePage {
 
     public void setLoginButton(WebElement loginButton) {
         this.loginButton = loginButton;
+    }
+    public WebElement getInvalidCredentialsError() {
+        return invalidCredentialsError;
+    }
+
+    public void setInvalidCredentialsError(WebElement invalidCredentialsError) {
+        this.invalidCredentialsError = invalidCredentialsError;
     }
 
 }

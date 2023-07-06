@@ -26,7 +26,7 @@ public class Homepage  extends  BasePage{
     @FindBy(xpath = ("//a[@id='about_sidebar_link']"))
     private WebElement aboutOption;
 
-    @FindBy(xpath = ("//a[@id='logout_sidebar_link']']"))
+    @FindBy(xpath = ("//a[@id='logout_sidebar_link']"))
     private WebElement logoutOption;
 
     @FindBy(className = "inventory_item_name")
@@ -41,15 +41,15 @@ public class Homepage  extends  BasePage{
     @FindBy(xpath = ("//button[@id='add-to-cart-sauce-labs-onesie']"))
     private WebElement addToCartSLO;
 
-//    public Boolean productsPanelDisplayed(){
-//        try{
-//            wait.until(ExpectedConditions.visibilityOf(productsPanel));
-//            return true;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
+    public Boolean productsPanelDisplayed(){
+        try{
+            waitUntilBeDisplayed(productsPanel);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 public WebElement getProductsPanel() {
     return productsPanel;
 }
@@ -88,11 +88,12 @@ public WebElement getProductsPanel() {
 
     public Homepage clickOnBurgerIcon(){
         burgerIcon.click();
+        waitUntilBeDisplayed(logoutOption);
         return PageFactory.initElements(driver, Homepage.class);
     }
 
     public LoginPage clickOnLogout(){
-        waitUntilBeDisplayed(logoutOption);
+     //   waitUntilBeDisplayed(logoutOption);
         logoutOption.click();
         return PageFactory.initElements(driver, LoginPage.class);
     }

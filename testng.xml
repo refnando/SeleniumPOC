@@ -1,12 +1,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Test Suite" thread-count="1">
-    <test name="Login Test">
+    <test name="Login Test" preserve-order="true">
         <classes>
             <class name="Test.LoginTest"/>
         </classes>
     </test>
-    <listeners>
-        <listener class-name="com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter"/>
-    </listeners>
 
 </suite>
