@@ -48,8 +48,6 @@
             <artifactId>extentreports</artifactId>
             <version>5.0.9</version>
         </dependency>
-
-
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/commons-io/commons-io &ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>commons-io</groupId>-->
