@@ -38,61 +38,46 @@ public class LoginPage extends BasePage {
     }
 
     public void clearCredentialFields(){
-        userTextField.clear();
-        pwdTextField.clear();
+        getUserTextField().clear();
+        getPwdTextField().clear();
     }
 
     public Homepage LoginWithValidCredentials(String user, String pwd){
         clearCredentialFields();
-        userTextField.sendKeys(user);
-        pwdTextField.sendKeys(pwd);
-        loginButton.click();
+        getUserTextField().sendKeys(user);
+        getPwdTextField().sendKeys(pwd);
+        getLoginButton().click();
         return PageFactory.initElements(driver, Homepage.class);
     }
 
     public LoginPage loginWithInvalidCredentials(String user, String pwd){
         clearCredentialFields();
-        userTextField.sendKeys(user);
-        pwdTextField.sendKeys(pwd);
-        loginButton.click();
+        getUserTextField().sendKeys(user);
+        getPwdTextField().sendKeys(pwd);
+        getLoginButton().click();
         return PageFactory.initElements(driver, LoginPage.class);
     }
 
     public String getInvalidCredentialsErrorMessage(){
-        return invalidCredentialsError.getText();
+        return getInvalidCredentialsError().getText();
     }
 
-    // Getters and Setters
+    // Getters
 
     public WebElement getUserTextField() {
         return userTextField;
-    }
-
-    public void setUserTextField(WebElement userTextField) {
-        this.userTextField = userTextField;
     }
 
     public WebElement getPwdTextField() {
         return pwdTextField;
     }
 
-    public void setPwdTextField(WebElement pwdTextField) {
-        this.pwdTextField = pwdTextField;
-    }
-
     public WebElement getLoginButton() {
         return loginButton;
     }
 
-    public void setLoginButton(WebElement loginButton) {
-        this.loginButton = loginButton;
-    }
     public WebElement getInvalidCredentialsError() {
         return invalidCredentialsError;
-    }
-
-    public void setInvalidCredentialsError(WebElement invalidCredentialsError) {
-        this.invalidCredentialsError = invalidCredentialsError;
     }
 
 }

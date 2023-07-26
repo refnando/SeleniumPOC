@@ -3,6 +3,7 @@
     <test name="Login Test" preserve-order="true">
         <classes>
             <class name="Test.LoginTest"/>
+            <class name="Test.HomeTest"/>
         </classes>
     </test>
 

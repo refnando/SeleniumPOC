@@ -41,18 +41,27 @@ public class Homepage  extends  BasePage{
     @FindBy(xpath = ("//button[@id='add-to-cart-sauce-labs-onesie']"))
     private WebElement addToCartSLO;
 
+    @FindBy(css = ("div.page_wrapper div:nth-child(1) div.header_container:nth-child(1) div.header_secondary_container div.right_component > span.select_container"))
+    private WebElement selectMenu;
+
+    @FindBy(css = ("div.page_wrapper div.header_container:nth-child(1) div.header_secondary_container div.right_component span.select_container select.product_sort_container > option:nth-child(4)"))
+    private WebElement priceH2L;
+
+    @FindBy(css = "div.inventory_item_price")
+    private List<WebElement> productPrices;
+
     public Boolean productsPanelDisplayed(){
         try{
-            waitUntilBeDisplayed(productsPanel);
+            waitUntilBeDisplayed(getProductsPanel());
             return true;
         }catch (Exception e){
             e.printStackTrace();
             return false;
         }
     }
-public WebElement getProductsPanel() {
-    return productsPanel;
-}
+    public WebElement getProductsPanel() {
+        return productsPanel;
+    }
 
     public WebElement getBurgerIcon() {
         return burgerIcon;
@@ -86,34 +95,73 @@ public WebElement getProductsPanel() {
         return addToCartSLO;
     }
 
+    public WebElement getSelectMenu(){
+        return selectMenu;
+    }
+
+    public WebElement getPriceH2L(){
+        return priceH2L;
+    }
+
+    public List<Double> getProductPrices() {
+        List<Double> prices = new ArrayList<>();
+        for (WebElement productPrice : productPrices) {
+            String priceText = productPrice.getText().replace("$", "");
+            prices.add(Double.parseDouble(priceText));
+        }
+        return prices;
+    }
+
     public Homepage clickOnBurgerIcon(){
-        burgerIcon.click();
-        waitUntilBeDisplayed(logoutOption);
+        getBurgerIcon().click();
+        waitUntilBeDisplayed(getLogoutOption());
         return PageFactory.initElements(driver, Homepage.class);
     }
 
     public LoginPage clickOnLogout(){
      //   waitUntilBeDisplayed(logoutOption);
-        logoutOption.click();
+        getLogoutOption().click();
         return PageFactory.initElements(driver, LoginPage.class);
+    }
+
+    public Homepage clickOnOrderMenu(){
+        waitUntilBeDisplayed(getSelectMenu());
+        getSelectMenu().click();
+        return  PageFactory.initElements(driver, Homepage.class);
+    }
+
+    public Homepage clickOnHighToLowerPrice(){
+        waitUntilBeDisplayed(getPriceH2L());
+        getPriceH2L().click();
+        return  PageFactory.initElements(driver, Homepage.class);
     }
 
     public void addProductsToCart(int... productIndices){
         for(int index : productIndices){
-            addToCartButtons.get(index).click();
+            getAddToCartButtons().get(index).click();
         }
     }
 
     public int getCartItemCount() {
-        String cartItemCountText = cartBadge.getText();
+        String cartItemCountText = getCartBadge().getText();
         return Integer.parseInt(cartItemCountText);
     }
 
+    public String getProductNameSLO() {
+        return getProductNames().get(4).getText();
+    }
+
     public Homepage addSpecificProductSLO(){
-        addToCartSLO.click();
-        waitUntilBeDisplayed(cartBadge);
+        String productName = getProductNameSLO();
+        getAddToCartSLO().click();
+        waitUntilBeDisplayed(getCartBadge());
         getCartItemCount();
         return PageFactory.initElements(driver, Homepage.class);
+    }
+
+    public CartPage clickOnCart(){
+        getCartBadge().click();
+        return PageFactory.initElements(driver, CartPage.class);
     }
 
 }

@@ -60,4 +60,6 @@ public class BasePage {
     public void setJse(JavascriptExecutor jse) {
         this.jse = jse;
     }
+
+
 }

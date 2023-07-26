@@ -1,4 +1,6 @@
 package Test;
+import Pages.Homepage;
+import Pages.LoginPage;
 import Utils.Driver;
 import Utils.LoadProperties;
 import Utils.ScreenShot;
@@ -57,6 +59,11 @@ public class BaseTest {
     public void tearDown(){
         driver.quit();
         extentReports.flush();
+    }
+
+    public Homepage loginWithValidCredentials() {
+        LoginPage loginPage = new LoginPage(driver);
+        return loginPage.LoginWithValidCredentials(properties.getProperty("user"), properties.getProperty("password"));
     }
 
 }
