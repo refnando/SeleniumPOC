@@ -9,7 +9,7 @@ import java.util.List;
 public class HomeTest extends BaseTest{
     @Test
 
-    public void sortProdoctsByPrice(){
+    public void sortProductsByPrice(){
         Homepage onHomepage = loginWithValidCredentials();
         onHomepage.clickOnOrderMenu().clickOnHighToLowerPrice();
 
